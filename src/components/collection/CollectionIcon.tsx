@@ -14,8 +14,8 @@ function CollectionIcon({ color, icon, size }: IProps) {
     <div className="flex items-center">
       <div
         className={`${backgroundColorFallback(color)} ${
-          size === "large" ? "w-12 h-12" : "w-7 h-7"
-        } p-1 rounded-lg shadow shadow-black/15 mr-3`}
+          size === "large" ? "w-12 h-12 p-2" : "w-7 h-7 p-1"
+        } rounded-lg shadow shadow-black/15 mr-3`}
       >
         <IconDisplay />
       </div>
