@@ -1,4 +1,5 @@
-import { CollectionBgColors, ColorType } from "@customTypes/colors";
+import { ColorType } from "@customTypes/colors";
+import { backgroundColorFallback } from "@helpers/fallback";
 
 type IProps = {
   color: ColorType;
@@ -10,7 +11,7 @@ function ProgressBar({ color, progress }: IProps) {
     <div className="w-24 h-5 rounded-md overflow-hidden">
       <div
         style={{ width: `${progress}%` }}
-        className={`flex items-center ${CollectionBgColors[color]} h-full`}
+        className={`flex items-center ${backgroundColorFallback(color)} h-full`}
       >
         <span className="text-xs font-bold tracking-widest pl-2">
           {progress}%

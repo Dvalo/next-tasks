@@ -4,7 +4,6 @@ import { collectionsDummy } from "@config/dummy";
 import CollectionItem from "@components/collection/CollectionItem";
 
 function Sidebar() {
-  console.log(collectionsDummy);
   return (
     <aside className="fixed bg-secondary h-full w-64">
       <h1 className="font-bold text-gray-300 tracking-wide text-lg p-6">

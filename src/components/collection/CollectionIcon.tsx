@@ -1,5 +1,6 @@
-import { CollectionBgColors, ColorType } from "@customTypes/colors";
 import React from "react";
+import { ColorType } from "@customTypes/colors";
+import { backgroundColorFallback } from "@helpers/fallback";
 
 type IProps = {
   color: ColorType;
@@ -12,7 +13,7 @@ function CollectionIcon({ color, icon, size }: IProps) {
   return (
     <div className="flex items-center">
       <div
-        className={`${CollectionBgColors[color]} ${
+        className={`${backgroundColorFallback(color)} ${
           size === "large" ? "w-12 h-12" : "w-7 h-7"
         } p-1 rounded-lg shadow shadow-black/15 mr-3`}
       >

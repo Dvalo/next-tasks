@@ -2,7 +2,7 @@ const collectionsDummy = [
   {
     id: 1,
     title: "House Chores",
-    color: "Pink",
+    color: "pink",
     icon: "house",
     tasks: [
       {
@@ -24,7 +24,7 @@ const collectionsDummy = [
   {
     id: 2,
     title: "University",
-    color: "Green",
+    color: "green",
     icon: "education",
     tasks: [
       {
@@ -46,7 +46,7 @@ const collectionsDummy = [
   {
     id: 3,
     title: "Work",
-    color: "Indigo",
+    color: "indigo",
     icon: "work",
     tasks: [
       {

@@ -3,11 +3,11 @@ import Link from "next/link";
 import CollectionItem from "@components/collection/CollectionItem";
 import TaskItem from "@components/TaskItem";
 import { ChevronDownIcon } from "@heroicons/react/solid";
-import {
-  CollectionBgColors,
-  CollectionBorderColors,
-} from "@customTypes/colors";
 import { Collection } from "@customTypes/collection";
+import {
+  backgroundColorFallback,
+  borderColorFallback,
+} from "@helpers/fallback";
 
 type IProps = {
   collection: Collection;
@@ -54,8 +54,8 @@ function OverviewCard({ collection }: IProps) {
         <div className="py-8 px-5">
           {collection.tasks.map((task) => (
             <TaskItem
-              borderColor={CollectionBorderColors[collection.color]}
-              checkedColor={CollectionBgColors[collection.color]}
+              borderColor={borderColorFallback(collection.color)}
+              checkedColor={backgroundColorFallback(collection.color)}
               task={task}
               key={task.id}
             />
