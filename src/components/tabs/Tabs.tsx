@@ -1,8 +1,9 @@
+import { DashboardTabs } from "@config/tabs";
 import React, { ReactNode } from "react";
 
 type IProps = {
   children: ReactNode;
-  onChange: (value: string) => void;
+  onChange: (value: DashboardTabs) => void;
   activeTab: string;
 };
 

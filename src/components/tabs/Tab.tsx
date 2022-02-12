@@ -1,7 +1,7 @@
-import React from "react";
+import { DashboardTabs } from "@config/tabs";
 
 type IProps = {
-  value: string;
+  value: DashboardTabs;
   title: string;
   onChange?: (value: string) => void;
   activeTab?: string;
