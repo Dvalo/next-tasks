@@ -3,12 +3,13 @@ import React, { ReactNode } from "react";
 type IProps = {
   children: ReactNode;
   onChange: (value: string) => void;
+  activeTab: string;
 };
 
-function Tabs({ children, onChange }: IProps) {
+function Tabs({ children, onChange, activeTab }: IProps) {
   const childrenWithProps = React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
-      return React.cloneElement(child, { onChange });
+      return React.cloneElement(child, { onChange, activeTab });
     }
     return child;
   });
