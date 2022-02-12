@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { collectionsDummy } from "@config/dummy";
-import CollectionItem from "@components/CollectionItem";
+import CollectionItem from "@components/collection/CollectionItem";
 
 function Sidebar() {
   console.log(collectionsDummy);
