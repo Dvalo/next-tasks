@@ -8,7 +8,7 @@ type IProps = {
 
 function ProgressBar({ color, progress }: IProps) {
   return (
-    <div className="w-24 h-5 rounded-md overflow-hidden">
+    <div className="w-24 h-5 rounded-md overflow-hidden border border-neutral-100/5">
       <div
         style={{ width: `${progress}%` }}
         className={`flex items-center ${backgroundColorFallback(color)} h-full`}

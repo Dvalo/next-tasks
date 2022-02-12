@@ -10,6 +10,11 @@ type IProps = {
 };
 
 function CollectionCard({ collection }: IProps) {
+  const totalTasks = collection.tasks.length;
+  const completedTasks = collection.tasks.filter(
+    (task) => task.completed
+  ).length;
+
   return (
     <Link href={`/collections/${collection.id}`} passHref>
       <a className="flex bg-secondary rounded-xl p-6 h-48 min-h-full mb-4 ease-out duration-300 last:mb-0 hover:bg-secondary_hover">
@@ -24,8 +29,13 @@ function CollectionCard({ collection }: IProps) {
               {collection.title}
             </div>
             <div className="flex items-center justify-between mt-3">
-              <div className="text-sm text-gray-400">4/8 done</div>
-              <ProgressBar color={collection.color} progress={100} />
+              <div className="text-sm text-gray-400">
+                {completedTasks}/{totalTasks} completed
+              </div>
+              <ProgressBar
+                color={collection.color}
+                progress={Math.round((completedTasks / totalTasks) * 100)}
+              />
             </div>
           </div>
         </div>
