@@ -1,13 +1,13 @@
 import React, { ReactNode } from "react";
 
 type IProps = {
+  title: string;
   active: boolean;
   children: ReactNode;
   handleClose?: () => void;
-  handleSubmit?: () => void;
 };
 
-function Modal({ active, children, handleClose, handleSubmit }: IProps) {
+function Modal({ title, active, children, handleClose }: IProps) {
   return (
     <>
       <div
@@ -23,24 +23,19 @@ function Modal({ active, children, handleClose, handleSubmit }: IProps) {
       >
         <div className="pointer-events-auto mt-28 mx-auto max-w-md w-full p-4 rounded-lg bg-secondary">
           <div className="flex flex-col justify-between h-full">
-            <div className="modal-content">{children}</div>
-            <div className="flex justify-end">
-              <button
-                type="button"
-                className="text-white bg-red-600 hover:bg-red-700 focus:ring-2 focus:ring-red-800/50 font-medium rounded-lg text-sm px-5 py-2 text-center"
-                onClick={handleClose}
-              >
-                Close
-              </button>
-              {handleSubmit && (
+            <div className="modal-content">
+              <div className="flex justify-between mb-6">
+                <h3 className="text-gray-300 font-bold mb-4">{title}</h3>
                 <button
                   type="button"
-                  onClick={handleSubmit}
-                  className="text-white bg-green-600 hover:bg-green-700 focus:ring-2 focus:ring-green-800/50 font-medium rounded-lg text-sm px-5 py-2 text-center ml-3"
+                  className="text-white bg-red-600 hover:bg-red-700 focus:ring-2 focus:ring-red-800/50 font-medium rounded-lg text-sm px-5 py-2 text-center"
+                  onClick={handleClose}
                 >
-                  Submit
+                  Close
                 </button>
-              )}
+              </div>
+
+              {children}
             </div>
           </div>
         </div>
