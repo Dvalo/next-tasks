@@ -34,7 +34,7 @@ function CollectionCard({ collection }: IProps) {
               </div>
               <ProgressBar
                 color={collection.color}
-                progress={Math.round((completedTasks / totalTasks) * 100)}
+                progress={Math.round((completedTasks / totalTasks) * 100) || 0}
               />
             </div>
           </div>
