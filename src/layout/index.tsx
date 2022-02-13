@@ -4,13 +4,14 @@ import Content from "@layout/content/Content";
 
 type IProps = {
   children: ReactNode;
+  loading: boolean;
 };
 
-function Layout({ children }: IProps) {
+function Layout({ children, loading }: IProps) {
   return (
     <div className="flex min-h-screen text-gray-200">
       <Sidebar />
-      <Content>{children}</Content>
+      <Content>{loading ? "temporary loading" : children}</Content>
     </div>
   );
 }
