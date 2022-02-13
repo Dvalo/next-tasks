@@ -5,7 +5,7 @@ import { initialTasks } from "@context/InitialTasks";
 
 interface ITaskContext {
   tasks: Collection[];
-  markAsComplete: (id: number) => number;
+  changeCompletion: (collectionId: number, taskId: number) => void;
   addTaskToCollection: (collectionId: number, taskId: number) => number;
   removeTaskFromCollection: (collectionId: number, taskId: number) => number;
   createCollection: (collection: Collection) => void;
@@ -34,9 +34,19 @@ function TasksProvider({ children }: IProps) {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
-  function markAsComplete(id: number) {
-    console.log("marked as complete");
-    return 1;
+  function changeCompletion(collectionId: number, taskId: number) {
+    const tasksCopy = [...tasks];
+    const collectionIndex = tasks.findIndex(
+      (collection) => collection.id === collectionId
+    );
+    const taskIndex = tasks[collectionIndex].tasks.findIndex(
+      (task) => task.id === taskId
+    );
+    if (collectionIndex != -1 && taskIndex != -1) {
+      const status = tasksCopy[collectionIndex].tasks[taskIndex].completed;
+      tasksCopy[collectionIndex].tasks[taskIndex].completed = !status;
+      setTasks([...tasksCopy]);
+    }
   }
 
   function addTaskToCollection(collectionId: number, taskId: number) {
@@ -62,7 +72,7 @@ function TasksProvider({ children }: IProps) {
     <TasksContext.Provider
       value={{
         tasks,
-        markAsComplete,
+        changeCompletion,
         addTaskToCollection,
         removeTaskFromCollection,
         createCollection,

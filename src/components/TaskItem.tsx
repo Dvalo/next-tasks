@@ -1,21 +1,36 @@
 import { useState } from "react";
 import { Task } from "@customTypes/task";
+import { useTasksContext } from "@context/TasksProvider";
 
 type IProps = {
+  collectionId: number;
   task: Task;
   borderColor: string;
   checkedColor: string;
+  block?: boolean;
 };
 
-function TaskItem({ task, borderColor, checkedColor }: IProps) {
+function TaskItem({
+  collectionId,
+  task,
+  borderColor,
+  checkedColor,
+  block = false,
+}: IProps) {
+  const { changeCompletion } = useTasksContext();
   const [checked, setChecked] = useState(task.completed);
 
   function handleChange() {
     setChecked((prevState) => !prevState);
+    changeCompletion(collectionId, task.id);
   }
 
   return (
-    <div className="flex items-center mb-5 last:mb-0">
+    <div
+      className={`flex items-center mb-5 last:mb-0 ${
+        block ? "bg-secondary p-5 rounded-lg" : "bg-transparent"
+      }`}
+    >
       <label className="cursor-pointer flex items-center">
         <input
           type="checkbox"

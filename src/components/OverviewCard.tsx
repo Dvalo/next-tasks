@@ -54,6 +54,7 @@ function OverviewCard({ collection }: IProps) {
         <div className="py-8 px-5">
           {collection.tasks.map((task) => (
             <TaskItem
+              collectionId={collection.id}
               borderColor={borderColorFallback(collection.color)}
               checkedColor={backgroundColorFallback(collection.color)}
               task={task}
