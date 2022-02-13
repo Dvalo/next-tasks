@@ -7,14 +7,14 @@ const initialTasks = [
     tasks: [
       {
         id: 1,
-        title: "Do dishes",
+        title: "Do something important in the house",
         completed: false,
         created: "",
         due: "",
       },
       {
         id: 2,
-        title: "Clean up table",
+        title: "Do something else in the house",
         completed: false,
         created: "",
         due: "",
@@ -29,14 +29,21 @@ const initialTasks = [
     tasks: [
       {
         id: 1,
-        title: "Study something from some book",
+        title: "Study for the exam for the next wednesday",
         completed: true,
         created: "",
         due: "",
       },
       {
         id: 2,
-        title: "Write essay for the class",
+        title: "Write essay for the upcoming psychology class",
+        completed: false,
+        created: "",
+        due: "",
+      },
+      {
+        id: 3,
+        title: "Prepare for another exam for next friday",
         completed: false,
         created: "",
         due: "",
@@ -58,7 +65,14 @@ const initialTasks = [
       },
       {
         id: 2,
-        title: "Fix bugs and optimize code",
+        title: "Fix bugs and optimize production code",
+        completed: false,
+        created: "",
+        due: "",
+      },
+      {
+        id: 3,
+        title: "Do something important",
         completed: false,
         created: "",
         due: "",
