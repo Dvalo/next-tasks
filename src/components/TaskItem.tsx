@@ -8,7 +8,7 @@ type IProps = {
 };
 
 function TaskItem({ task, borderColor, checkedColor }: IProps) {
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(task.completed);
 
   function handleChange() {
     setChecked((prevState) => !prevState);
