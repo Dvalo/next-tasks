@@ -20,7 +20,7 @@ const Home: NextPage = () => {
   }
 
   return (
-    <Layout>
+    <Layout loading={!tasks}>
       <Head>
         <title>Dashboard</title>
       </Head>

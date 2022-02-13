@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Task } from "@customTypes/task";
 import { useTasksContext } from "@context/TasksProvider";
 
@@ -19,6 +19,10 @@ function TaskItem({
 }: IProps) {
   const { changeCompletion } = useTasksContext();
   const [checked, setChecked] = useState(task.completed);
+
+  useEffect(() => {
+    setChecked(task.completed);
+  }, [task]);
 
   function handleChange() {
     setChecked((prevState) => !prevState);
