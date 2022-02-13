@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* react-select changes */
+
+.cselect__control {
+  @apply bg-white/5 border-gray-600/50 w-24 duration-300 transition focus:ring-amber-300 focus:border-amber-300 !important;
+}
+.cselect__single-value {
+  @apply text-white/50 !important;
+}
+.cselect__indicator-separator,
+.cselect__dropdown-indicator {
+  @apply hidden !important;
+}
+.cselect__menu {
+  @apply bg-primary w-36 p-1 !important;
+}
+.cselect__menu-list {
+  @apply grid grid-cols-3 gap-2 !important;
+}
+.cselect__option--is-focused {
+  @apply bg-transparent !important;
+}
+.cselect__option--is-selected {
+  @apply bg-white/10 !important;
+}
+.cselect__option {
+  @apply flex items-center justify-center px-1 py-2 rounded-sm duration-150 transition hover:bg-white/20 active:bg-white/40 focus:bg-white/40 !important;
+}

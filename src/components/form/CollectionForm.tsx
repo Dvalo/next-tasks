@@ -61,7 +61,7 @@ function CollectionForm({ closeModal }: IProps) {
           isSearchable={false}
           isClearable={true}
           options={collectionIconsSelect}
-          classNamePrefix="test"
+          classNamePrefix="cselect"
           onChange={(values) => handleSelectChange(values, "icon")}
         />
         <Select
@@ -70,7 +70,7 @@ function CollectionForm({ closeModal }: IProps) {
           isClearable={true}
           options={collectionColorsSelect}
           className="ml-4"
-          classNamePrefix="test"
+          classNamePrefix="cselect"
           onChange={(values) => handleSelectChange(values, "color")}
         />
       </div>
