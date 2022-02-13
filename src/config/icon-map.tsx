@@ -5,6 +5,7 @@ import {
   BriefcaseIcon,
   GlobeIcon,
 } from "@heroicons/react/solid";
+import { ISelect } from "@customTypes/select";
 
 enum IconsEnum {
   house = "house",
@@ -20,7 +21,7 @@ const collectionIcons: { [key: string]: React.ComponentType } = {
   [IconsEnum.travel]: GlobeIcon,
 };
 
-const collectionIconsSelect = [
+const collectionIconsSelect: Array<ISelect> = [
   {
     value: IconsEnum.house,
     label: <HomeIcon className="w-6 h-6" />,

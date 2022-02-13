@@ -1,4 +1,4 @@
-const collectionsDummy = [
+const initialTasks = [
   {
     id: 1,
     title: "House Chores",
@@ -67,4 +67,4 @@ const collectionsDummy = [
   },
 ];
 
-export { collectionsDummy };
+export { initialTasks };

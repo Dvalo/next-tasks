@@ -1,16 +1,17 @@
 import React from "react";
 import Link from "next/link";
-import { collectionsDummy } from "@config/dummy";
 import CollectionItem from "@components/collection/CollectionItem";
+import { useTasksContext } from "@context/TasksProvider";
 
 function Sidebar() {
+  const { tasks } = useTasksContext();
   return (
     <aside className="fixed bg-secondary h-full w-64">
       <h1 className="font-bold text-gray-300 tracking-wide text-lg p-6">
         Collections
       </h1>
       <div className="flex flex-col">
-        {collectionsDummy.map((collection) => (
+        {tasks && tasks.map((collection) => (
           <Link
             href={`/collections/${collection.id}`}
             passHref

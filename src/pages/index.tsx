@@ -7,15 +7,18 @@ import Tab from "@components/tabs/Tab";
 import Tabs from "@components/tabs/Tabs";
 import Overview from "@components/OverviewCard";
 import CollectionCard from "@components/collection/CollectionCard";
-import { collectionsDummy } from "@config/dummy";
+import CollectionCardCreate from "@components/collection/CollectionCardCreate";
 import { DashboardTabs } from "@config/tabs";
+import { useTasksContext } from "@context/TasksProvider";
 
 const Home: NextPage = () => {
+  const { tasks } = useTasksContext();
   const [activeTab, setActiveTab] = useState(DashboardTabs.Overview);
 
   function handleTabChange(tab: DashboardTabs) {
     setActiveTab(tab);
   }
+
   return (
     <Layout>
       <Head>
@@ -31,16 +34,19 @@ const Home: NextPage = () => {
       <div className="mt-6">
         {activeTab === "overview" && (
           <>
-            {collectionsDummy.map((collection) => (
-              <Overview collection={collection} key={collection.id} />
-            ))}
+            {tasks &&
+              tasks.map((collection) => (
+                <Overview collection={collection} key={collection.id} />
+              ))}
           </>
         )}
         {activeTab === "collections" && (
           <div className="grid grid-cols-3 gap-4">
-            {collectionsDummy.map((collection) => (
-              <CollectionCard collection={collection} key={collection.id} />
-            ))}
+            {tasks &&
+              tasks.map((collection) => (
+                <CollectionCard collection={collection} key={collection.id} />
+              ))}
+            <CollectionCardCreate />
           </div>
         )}
       </div>
