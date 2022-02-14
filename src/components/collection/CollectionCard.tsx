@@ -17,20 +17,22 @@ function CollectionCard({ collection }: IProps) {
 
   return (
     <Link href={`/collections/${collection.id}`} passHref>
-      <a className="flex bg-secondary rounded-xl p-6 h-48 min-h-full mb-4 ease-out duration-300 last:mb-0 hover:bg-secondary_hover">
-        <div className="flex flex-col justify-between w-full">
+      <a className="mb-4 flex h-48 min-h-full rounded-xl bg-secondary p-6 duration-300 ease-out last:mb-0 hover:bg-secondary_hover">
+        <div className="flex w-full flex-col justify-between">
           <CollectionIcon
             color={collection.color}
             icon={collectionIcons[collection.icon]}
             size="large"
           />
           <div>
-            <div className="text-gray-100 font-bold tracking-wide">
+            <div className="font-bold tracking-wide text-gray-100">
               {collection.title}
             </div>
-            <div className="flex items-center justify-between mt-3">
+            <div className="mt-3 flex items-center justify-between">
               <div className="text-sm text-gray-400">
-                {completedTasks}/{totalTasks} completed
+                {completedTasks === 0 && totalTasks === 0
+                  ? "No tasks"
+                  : `${completedTasks}/${totalTasks} completed`}
               </div>
               <ProgressBar
                 color={collection.color}

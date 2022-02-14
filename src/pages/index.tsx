@@ -35,9 +35,13 @@ const Home: NextPage = () => {
         {activeTab === "overview" && (
           <>
             {tasks &&
-              tasks.map((collection) => (
-                <Overview collection={collection} key={collection.id} />
-              ))}
+              tasks.map((collection) => {
+                if (collection.tasks.length > 0) {
+                  return (
+                    <Overview collection={collection} key={collection.id} />
+                  );
+                }
+              })}
           </>
         )}
         {activeTab === "collections" && (
