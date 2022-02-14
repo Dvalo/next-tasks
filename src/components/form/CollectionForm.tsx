@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import Select, { SingleValue } from "react-select";
-import { collectionColorsSelect } from "@config/color-map";
+import Button from "@components/Button";
+import {
+  collectionColorsSelect,
+  ButtonVariationsEnum,
+} from "@config/color-map";
 import { collectionIconsSelect } from "@config/icon-map";
 import { ISelect } from "@customTypes/select";
 import { useTasksContext } from "@context/TasksProvider";
@@ -74,13 +78,11 @@ function CollectionForm({ closeModal }: IProps) {
           onChange={(values) => handleSelectChange(values, "color")}
         />
       </div>
-      <button
-        type="button"
-        onClick={handleSubmit}
-        className="text-white bg-green-600 hover:bg-green-700 focus:ring-2 focus:ring-green-800/50 font-medium rounded-lg text-sm px-5 py-2 text-center mt-5"
-      >
-        Submit
-      </button>
+      <div className="mt-5">
+        <Button type={ButtonVariationsEnum.success} handleClick={handleSubmit}>
+          Submit
+        </Button>
+      </div>
     </>
   );
 }

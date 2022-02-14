@@ -5,6 +5,23 @@ enum ColorsEnum {
   indigo = "indigo",
 }
 
+enum ButtonVariationsEnum {
+  success = "success",
+  error = "error",
+  info = "info",
+}
+
+interface IButtonVariation {
+  bg: string;
+  hover: string;
+}
+
+const buttonVariations: { [key: string]: IButtonVariation } = {
+  success: { bg: "bg-green-600", hover: "hover:bg-green-700" },
+  error: { bg: "bg-red-600", hover: "hover:bg-red-700" },
+  info: { bg: "bg-sky-600", hover: "hover:bg-sky-700" },
+};
+
 const collectionBgColors: { [key: string]: string } = {
   pink: "bg-pink-400",
   purple: "bg-purple-400",
@@ -41,8 +58,10 @@ const collectionColorsSelect = [
 ];
 
 export {
+  buttonVariations,
   collectionBgColors,
   collectionBorderColors,
   collectionColorsSelect,
   ColorsEnum,
+  ButtonVariationsEnum,
 };
