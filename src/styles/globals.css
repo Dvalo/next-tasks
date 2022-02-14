@@ -2,8 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-/* react-select */
+@layer utilities {
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+}
 
+/* react-select */
 .cselect__control {
   @apply w-24 border-gray-600/50 bg-white/5 transition duration-300 focus:border-amber-300 focus:ring-amber-300 !important;
 }
