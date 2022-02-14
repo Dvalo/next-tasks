@@ -36,9 +36,9 @@ function CollectionForm({ closeModal }: IProps) {
   function handleSubmit() {
     const collection = {
       id: Math.floor(Math.random() * 100),
-      title,
-      icon,
-      color,
+      title: title || "Unnamed Collection",
+      icon: icon || collectionIconsSelect[0].value,
+      color: color || collectionColorsSelect[0].value,
       tasks: [],
     };
     createCollection(collection);
@@ -53,18 +53,19 @@ function CollectionForm({ closeModal }: IProps) {
       <input
         type="email"
         id="email"
-        className="bg-white/5 border-gray-600/50 placeholder-gray-100 text-white text-sm rounded-md block w-full p-2.5 duration-300 transition focus:ring-0 focus:blue-amber-300 focus:border"
+        className="focus:blue-amber-300 block w-full rounded-md border-gray-600/50 bg-white/5 p-2.5 text-sm text-white placeholder-gray-100 transition duration-300 focus:border focus:ring-0"
         placeholder="Collection Name"
         value={title}
         onChange={handleNameChange}
         required
       />
-      <div className="flex mt-3">
+      <div className="mt-3 flex">
         <Select
           placeholder="Icon"
           isSearchable={false}
           isClearable={true}
           options={collectionIconsSelect}
+          defaultValue={collectionIconsSelect[0]}
           classNamePrefix="cselect"
           onChange={(values) => handleSelectChange(values, "icon")}
         />
@@ -73,6 +74,7 @@ function CollectionForm({ closeModal }: IProps) {
           isSearchable={false}
           isClearable={true}
           options={collectionColorsSelect}
+          defaultValue={collectionColorsSelect[0]}
           className="ml-4"
           classNamePrefix="cselect"
           onChange={(values) => handleSelectChange(values, "color")}
