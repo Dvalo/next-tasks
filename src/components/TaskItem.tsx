@@ -5,6 +5,7 @@ import { useTasksContext } from "@context/TasksProvider";
 type IProps = {
   collectionId: number;
   task: Task;
+  textColor: string;
   borderColor: string;
   checkedColor: string;
   block?: boolean;
@@ -13,6 +14,7 @@ type IProps = {
 function TaskItem({
   collectionId,
   task,
+  textColor,
   borderColor,
   checkedColor,
   block = false,
@@ -31,19 +33,20 @@ function TaskItem({
 
   return (
     <div
-      className={`flex items-center mb-5 last:mb-0 ${
-        block ? "bg-secondary p-5 rounded-lg" : "bg-transparent"
+      className={`mb-5 flex items-center last:mb-0 ${
+        block ? "rounded-lg bg-secondary p-5" : "bg-transparent"
       }`}
     >
-      <label className="cursor-pointer flex items-center">
+      <label className="flex cursor-pointer items-center">
         <input
           type="checkbox"
-          className={`cursor-pointer h-6 w-6 text-emerald-500 bg-transparent border-2 ${borderColor} rounded-md ease-out duration-300 bg-transparent hover:bg-slate-50/10 focus:outline-0 
-          focus:ring-offset-transparent focus:ring-transparent focus:shadow-transparent checked:${checkedColor}`}
+          className={`h-6 w-6 cursor-pointer ${textColor} border-2 bg-transparent ${borderColor} rounded-md bg-transparent 
+              duration-300 ease-out hover:bg-slate-50/10 focus:shadow-transparent focus:outline-0 focus:ring-transparent 
+              focus:ring-offset-transparent checked:${checkedColor}`}
           checked={checked}
           onChange={handleChange}
         />
-        <span className="font-bold text-base ml-4">{task.title}</span>
+        <span className="ml-4 text-base font-bold">{task.title}</span>
       </label>
     </div>
   );

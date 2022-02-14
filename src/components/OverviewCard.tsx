@@ -7,6 +7,7 @@ import { Collection } from "@customTypes/collection";
 import {
   backgroundColorFallback,
   borderColorFallback,
+  textColorFallback,
 } from "@helpers/fallback";
 
 type IProps = {
@@ -34,14 +35,14 @@ function OverviewCard({ collection }: IProps) {
   }
 
   return (
-    <div className="bg-secondary rounded-lg shadow-lg mb-8 last:mb-0">
+    <div className="mb-8 rounded-lg bg-secondary shadow-lg last:mb-0">
       <div
-        className="cursor-pointer flex items-center justify-between bg-secondaryl rounded-t-lg p-5"
+        className="flex cursor-pointer items-center justify-between rounded-t-lg bg-secondaryl p-5"
         onClick={toggleAccordion}
       >
         <CollectionItem collection={collection} />
         <ChevronDownIcon
-          className={`h-8 w-8 transform duration-500 ease ${
+          className={`ease h-8 w-8 transform duration-500 ${
             active ? "rotate-180" : "rotate-0"
           }`}
         />
@@ -55,6 +56,7 @@ function OverviewCard({ collection }: IProps) {
           {collection.tasks.map((task) => (
             <TaskItem
               collectionId={collection.id}
+              textColor={textColorFallback(collection.color)}
               borderColor={borderColorFallback(collection.color)}
               checkedColor={backgroundColorFallback(collection.color)}
               task={task}

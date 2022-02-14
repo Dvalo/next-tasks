@@ -1,4 +1,8 @@
-import { collectionBgColors, collectionBorderColors } from "@config/color-map";
+import {
+  collectionBgColors,
+  collectionBorderColors,
+  collectionTextColors,
+} from "@config/color-map";
 
 function backgroundColorFallback(color: string) {
   if (collectionBgColors[color]) {
@@ -14,4 +18,11 @@ function borderColorFallback(color: string) {
   return collectionBorderColors.default;
 }
 
-export { backgroundColorFallback, borderColorFallback };
+function textColorFallback(color: string) {
+  if (collectionTextColors[color]) {
+    return collectionTextColors[color];
+  }
+  return collectionTextColors.default;
+}
+
+export { backgroundColorFallback, borderColorFallback, textColorFallback };

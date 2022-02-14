@@ -14,6 +14,7 @@ import { ArrowCircleLeftIcon } from "@heroicons/react/outline";
 import {
   backgroundColorFallback,
   borderColorFallback,
+  textColorFallback,
 } from "@helpers/fallback";
 
 function CollectionPage() {
@@ -80,6 +81,7 @@ function CollectionPage() {
             {nonCompletedTasks.map((task) => (
               <TaskItem
                 collectionId={currentCollection.id}
+                textColor={textColorFallback(currentCollection.color)}
                 borderColor={borderColorFallback(currentCollection.color)}
                 checkedColor={backgroundColorFallback(currentCollection.color)}
                 task={task}
@@ -93,6 +95,7 @@ function CollectionPage() {
             {completedTasks.map((task) => (
               <TaskItem
                 collectionId={currentCollection.id}
+                textColor={textColorFallback(currentCollection.color)}
                 borderColor={borderColorFallback(currentCollection.color)}
                 checkedColor={backgroundColorFallback(currentCollection.color)}
                 task={task}
