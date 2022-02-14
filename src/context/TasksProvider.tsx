@@ -6,10 +6,10 @@ import { initialTasks } from "@context/InitialTasks";
 interface ITaskContext {
   tasks: Collection[];
   changeCompletion: (collectionId: number, taskId: number) => void;
-  addTaskToCollection: (collectionId: number, taskId: number) => number;
+  addTaskToCollection: (collectionId: number, taskId: Task) => void;
   removeTaskFromCollection: (collectionId: number, taskId: number) => number;
   createCollection: (collection: Collection) => void;
-  deleteCollection: (collectionId: number) => number;
+  deleteCollection: (collectionId: number) => void;
 }
 
 const TasksContext = React.createContext<ITaskContext | undefined>(undefined);
@@ -49,9 +49,20 @@ function TasksProvider({ children }: IProps) {
     }
   }
 
-  function addTaskToCollection(collectionId: number, taskId: number) {
-    console.log("added task to collection");
-    return 1;
+  function addTaskToCollection(collectionId: number, task: Task) {
+    const collectionIndex = tasks.findIndex(
+      (collection) => collection.id === collectionId
+    );
+    if (collectionIndex !== -1) {
+      setTasks((prevState) => [
+        ...prevState.slice(0, collectionIndex),
+        {
+          ...prevState[collectionIndex],
+          tasks: [...prevState[collectionIndex].tasks, task],
+        },
+        ...prevState.slice(collectionIndex + 1),
+      ]);
+    }
   }
 
   function removeTaskFromCollection(collectionId: number, taskId: number) {
@@ -64,8 +75,9 @@ function TasksProvider({ children }: IProps) {
   }
 
   function deleteCollection(collectionId: number) {
-    console.log("deleted collection");
-    return 1;
+    setTasks((prevState) =>
+      prevState.filter((collection) => collection.id !== collectionId)
+    );
   }
 
   return (
