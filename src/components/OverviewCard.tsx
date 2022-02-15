@@ -20,6 +20,8 @@ function OverviewCard({ collection }: IProps) {
 
   const contentSpace = useRef<HTMLDivElement>(null);
 
+  const nonCompletedTasks = collection.tasks.filter((task) => !task.completed);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       if (contentSpace.current && active) {
@@ -58,7 +60,7 @@ function OverviewCard({ collection }: IProps) {
         className="overflow-hidden duration-500 ease-in-out"
       >
         <div className="py-8 px-5">
-          {collection.tasks.map((task) => (
+          {nonCompletedTasks.map((task) => (
             <TaskItem
               collectionId={collection.id}
               textColor={textColorFallback(collection.color)}
