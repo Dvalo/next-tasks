@@ -46,7 +46,11 @@ function CollectionPage() {
   return (
     <Layout loading={!id || !currentCollection}>
       <Head>
-        <title>Collection Tasks</title>
+        <title>
+          {currentCollection
+            ? `${currentCollection.title} - Collection`
+            : `Collection Tasks`}
+        </title>
       </Head>
       {currentCollection && (
         <>
