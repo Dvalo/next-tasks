@@ -21,9 +21,12 @@ function OverviewCard({ collection }: IProps) {
   const contentSpace = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (contentSpace.current && active) {
-      setHeight(`${contentSpace.current.scrollHeight}px`);
-    }
+    const timer = setTimeout(() => {
+      if (contentSpace.current && active) {
+        setHeight(`${contentSpace.current.scrollHeight}px`);
+      }
+    }, 500);
+    return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [contentSpace]);
 
@@ -35,9 +38,9 @@ function OverviewCard({ collection }: IProps) {
   }
 
   return (
-    <div className="bg-secondary mb-8 rounded-lg shadow-lg last:mb-0">
+    <div className="mb-8 rounded-lg bg-secondary shadow-lg last:mb-0">
       <div
-        className="bg-secondaryl flex cursor-pointer items-center justify-between rounded-t-lg p-5"
+        className="flex cursor-pointer items-center justify-between rounded-t-lg bg-secondaryl p-5"
         onClick={toggleAccordion}
       >
         <CollectionItem collection={collection} />
