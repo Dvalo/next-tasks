@@ -130,7 +130,7 @@ function CollectionPage() {
               type={ButtonVariationsEnum.success}
               handleClick={handleDelete}
             >
-              Submit
+              Delete
             </Button>
             <Button
               type={ButtonVariationsEnum.error}
