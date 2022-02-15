@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
+import TaskTimeDisplay from "@components/task/TaskTimeDisplay";
 import { Task } from "@customTypes/task";
 import { useTasksContext } from "@context/TasksProvider";
 import { format, intervalToDuration, isBefore, isValid } from "date-fns";
-import TaskTimeDisplay from "@components/TaskTimeDisplay";
 
 type IProps = {
   collectionId: number;

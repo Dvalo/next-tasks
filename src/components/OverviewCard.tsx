@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import CollectionItem from "@components/collection/CollectionItem";
-import TaskItem from "@components/TaskItem";
+import TaskItem from "@components/task/TaskItem";
 import { ChevronDownIcon, ArrowCircleRightIcon } from "@heroicons/react/solid";
 import { Collection } from "@customTypes/collection";
 import {

@@ -7,7 +7,7 @@ import PageTitle from "@components/PageTitle";
 import TaskForm from "@components/form/TaskForm";
 import Button from "@components/Button";
 import Modal from "@components/modal/Modal";
-import TaskItem from "@components/TaskItem";
+import TaskItem from "@components/task/TaskItem";
 import { ButtonVariationsEnum } from "@config/color-map";
 import { useTasksContext } from "@context/TasksProvider";
 import { ArrowCircleLeftIcon } from "@heroicons/react/outline";
