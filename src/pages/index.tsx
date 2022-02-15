@@ -36,7 +36,9 @@ const Home: NextPage = () => {
           <>
             {tasks &&
               tasks.map((collection) => {
-                if (collection.tasks.length > 0) {
+                if (
+                  collection.tasks.filter((task) => !task.completed).length > 0
+                ) {
                   return (
                     <Overview collection={collection} key={collection.id} />
                   );
