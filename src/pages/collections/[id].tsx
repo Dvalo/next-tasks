@@ -18,7 +18,10 @@ import {
 } from "@helpers/fallback";
 
 function CollectionPage() {
-  const [modalActive, setModalActive] = useState(false);
+  const [modalActive, setModalActive] = useState({
+    formModal: false,
+    confirmationModal: false,
+  });
   const { tasks, deleteCollection } = useTasksContext();
   const router = useRouter();
   const { id } = router.query;
@@ -35,12 +38,12 @@ function CollectionPage() {
     deleteCollection(Number(id));
   }
 
-  function closeModal() {
-    setModalActive(false);
+  function closeModal(id: string) {
+    setModalActive({ ...modalActive, [id]: false });
   }
 
-  function openModal() {
-    setModalActive(true);
+  function openModal(id: string) {
+    setModalActive({ ...modalActive, [id]: true });
   }
 
   return (
@@ -66,13 +69,13 @@ function CollectionPage() {
               </Link>
               <Button
                 type={ButtonVariationsEnum.success}
-                handleClick={openModal}
+                handleClick={() => openModal("formModal")}
               >
                 Create Task
               </Button>
               <Button
                 type={ButtonVariationsEnum.error}
-                handleClick={handleDelete}
+                handleClick={() => openModal("confirmationModal")}
               >
                 Delete Collection
               </Button>
@@ -110,13 +113,31 @@ function CollectionPage() {
           </div>
           <Modal
             title="Create Collection"
-            active={modalActive}
-            handleClose={closeModal}
+            active={modalActive.formModal}
+            handleClose={() => closeModal("formModal")}
           >
             <TaskForm
               collectionId={currentCollection.id}
-              closeModal={closeModal}
+              closeModal={() => closeModal("formModal")}
             />
+          </Modal>
+          <Modal
+            title="Are you sure you want to delete this collection?"
+            active={modalActive.confirmationModal}
+            handleClose={() => closeModal("confirmationModal")}
+          >
+            <Button
+              type={ButtonVariationsEnum.success}
+              handleClick={handleDelete}
+            >
+              Submit
+            </Button>
+            <Button
+              type={ButtonVariationsEnum.error}
+              handleClick={() => closeModal("confirmationModal")}
+            >
+              Cancel
+            </Button>
           </Modal>
         </>
       )}
