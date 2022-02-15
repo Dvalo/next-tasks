@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import CollectionItem from "@components/collection/CollectionItem";
 import TaskItem from "@components/TaskItem";
-import { ChevronDownIcon } from "@heroicons/react/solid";
+import { ChevronDownIcon, ArrowCircleRightIcon } from "@heroicons/react/solid";
 import { Collection } from "@customTypes/collection";
 import {
   backgroundColorFallback,
@@ -35,15 +35,17 @@ function OverviewCard({ collection }: IProps) {
   }
 
   return (
-    <div className="mb-8 rounded-lg bg-secondary shadow-lg last:mb-0">
+    <div className="bg-secondary mb-8 rounded-lg shadow-lg last:mb-0">
       <div
-        className="flex cursor-pointer items-center justify-between rounded-t-lg bg-secondaryl p-5"
+        className="bg-secondaryl flex cursor-pointer items-center justify-between rounded-t-lg p-5"
         onClick={toggleAccordion}
       >
         <CollectionItem collection={collection} />
         <ChevronDownIcon
           className={`ease h-8 w-8 transform duration-500 ${
-            active ? "rotate-180" : "rotate-0"
+            active
+              ? "rotate-180 hover:text-red-500"
+              : "rotate-0 hover:text-lime-500"
           }`}
         />
       </div>
@@ -66,7 +68,12 @@ function OverviewCard({ collection }: IProps) {
         </div>
         <div className="flex items-center justify-center border-t border-slate-50/5 p-3">
           <Link href={`/collections/${collection.id}`} passHref>
-            <a className="font-bold">Go to Collection</a>
+            <a className="group flex items-center font-bold">
+              <span className="transition-all duration-150 group-hover:tracking-wider group-hover:text-lime-200">
+                Go to Collection
+              </span>
+              <ArrowCircleRightIcon className="h-5 w-5 translate-x-2 transition-transform duration-150 group-hover:translate-x-3 group-hover:text-lime-200" />
+            </a>
           </Link>
         </div>
       </div>
