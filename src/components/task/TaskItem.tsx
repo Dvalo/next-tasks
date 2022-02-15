@@ -88,7 +88,7 @@ function TaskItem({
             checked={checked}
             onChange={handleChange}
           />
-          <label className="flex cursor-pointer items-center">
+          <label className="flex items-center">
             <span className="ml-4 text-base font-bold">{task.title}</span>
           </label>
         </div>
