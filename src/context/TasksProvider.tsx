@@ -7,7 +7,7 @@ interface ITaskContext {
   tasks: Collection[];
   changeCompletion: (collectionId: number, taskId: number) => void;
   addTaskToCollection: (collectionId: number, taskId: Task) => void;
-  removeTaskFromCollection: (collectionId: number, taskId: number) => number;
+  removeTaskFromCollection: (collectionId: number, taskId: number) => void;
   createCollection: (collection: Collection) => void;
   deleteCollection: (collectionId: number) => void;
 }
@@ -66,8 +66,23 @@ function TasksProvider({ children }: IProps) {
   }
 
   function removeTaskFromCollection(collectionId: number, taskId: number) {
-    console.log("removed task to collection");
-    return 1;
+    const collectionIndex = tasks.findIndex(
+      (collection) => collection.id === collectionId
+    );
+    if (collectionIndex !== -1) {
+      setTasks((prevState) => [
+        ...prevState.slice(0, collectionIndex),
+        {
+          ...prevState[collectionIndex],
+          tasks: [
+            ...prevState[collectionIndex].tasks.filter(
+              (task) => task.id !== taskId
+            ),
+          ],
+        },
+        ...prevState.slice(collectionIndex + 1),
+      ]);
+    }
   }
 
   function createCollection(collection: Collection) {

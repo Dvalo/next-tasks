@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import TaskTimeDisplay from "@components/task/TaskTimeDisplay";
+import TaskDelete from "@components/task/TaskDelete";
 import { Task } from "@customTypes/task";
 import { useTasksContext } from "@context/TasksProvider";
 import { format, intervalToDuration, isBefore, isValid } from "date-fns";
@@ -21,7 +22,7 @@ function TaskItem({
   checkedColor,
   block = false,
 }: IProps) {
-  const { changeCompletion } = useTasksContext();
+  const { changeCompletion, removeTaskFromCollection } = useTasksContext();
   const [checked, setChecked] = useState(task.completed);
   const [timeLeft, setTimeLeft] = useState(getCountdown(task.due));
 
@@ -40,6 +41,10 @@ function TaskItem({
   function handleChange() {
     setChecked((prevState) => !prevState);
     changeCompletion(collectionId, task.id);
+  }
+
+  function handleDelete() {
+    removeTaskFromCollection(collectionId, task.id);
   }
 
   function getIsBefore(date: string) {
@@ -73,17 +78,22 @@ function TaskItem({
         block ? "rounded-lg bg-secondary p-5" : "bg-transparent"
       }`}
     >
-      <label className="flex cursor-pointer items-center">
-        <input
-          type="checkbox"
-          className={`h-6 w-6 cursor-pointer ${textColor} border-2 bg-transparent ${borderColor} rounded-md bg-transparent 
+      <div className="flex justify-between">
+        <div className="flex items-center">
+          <input
+            type="checkbox"
+            className={`h-6 w-6 cursor-pointer ${textColor} border-2 bg-transparent ${borderColor} rounded-md bg-transparent 
               duration-300 ease-out hover:bg-slate-50/10 focus:shadow-transparent focus:outline-0 focus:ring-transparent 
               focus:ring-offset-transparent checked:${checkedColor}`}
-          checked={checked}
-          onChange={handleChange}
-        />
-        <span className="ml-4 text-base font-bold">{task.title}</span>
-      </label>
+            checked={checked}
+            onChange={handleChange}
+          />
+          <label className="flex cursor-pointer items-center">
+            <span className="ml-4 text-base font-bold">{task.title}</span>
+          </label>
+        </div>
+        <TaskDelete handleDelete={handleDelete} />
+      </div>
       {timeLeft && !task.completed && (
         <TaskTimeDisplay color="text-white/30">
           <span
