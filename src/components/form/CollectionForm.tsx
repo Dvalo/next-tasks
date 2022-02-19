@@ -51,9 +51,9 @@ function CollectionForm({ closeModal }: IProps) {
   return (
     <>
       <input
-        type="email"
-        id="email"
-        className="focus:blue-amber-300 block w-full rounded-md border-gray-600/50 bg-white/5 p-2.5 text-sm text-white placeholder-gray-100 transition duration-300 focus:border focus:ring-0"
+        type="text"
+        id="collection"
+        className="focus:blue-amber-300 block w-full rounded-md border-gray-600/50 bg-white/5 p-2.5 text-sm text-white placeholder-gray-100/10 transition duration-300 focus:border focus:ring-0"
         placeholder="Collection Name"
         value={title}
         onChange={handleNameChange}

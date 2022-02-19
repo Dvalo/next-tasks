@@ -46,7 +46,7 @@
   @apply top-2 !important;
 }
 .react-datepicker__input-container input {
-  @apply w-full rounded-md border-gray-600/50 bg-white/5 transition duration-300 focus:border-amber-300 focus:ring-amber-300 !important;
+  @apply w-full rounded-md border-gray-600/50 bg-white/5 transition duration-300 focus:ring-1 !important;
 }
 .react-datepicker {
   @apply border-indigo-400 bg-primary !important;

@@ -35,7 +35,7 @@ function TaskForm({ collectionId, closeModal }: IProps) {
       <input
         type="text"
         id="title"
-        className="focus:blue-amber-300 block w-full rounded-md border-gray-600/50 bg-white/5 p-2.5 text-sm text-white placeholder-gray-100 transition duration-300 focus:border focus:ring-0"
+        className="focus:blue-amber-300 block w-full rounded-md border-gray-600/50 bg-white/5 p-2.5 text-sm text-white placeholder-gray-100/10 transition duration-300 focus:border focus:ring-0"
         placeholder="Task Title"
         value={title}
         onChange={(title) => setTitle(title.target.value)}
